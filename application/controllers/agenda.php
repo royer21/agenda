@@ -18,7 +18,7 @@ class Agenda extends CI_Controller {
 	public function index($pagina = FALSE) {
 
 		$inicio= 0 ;
-		$limite= 6 ;
+		$limite= 3 ;
 		if ($pagina){
 			$inicio=($pagina-1)*$limite;
 		}

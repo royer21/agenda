@@ -77,7 +77,7 @@ footer p {
   width: 100%;
 }
 body {
-  	/* background: url("../img/fondo1.jpg"); */
+    /* background: url("../img/fondo1.jpg"); */
    background: #95a5a6;
    
    background-size: cover;
@@ -85,35 +85,35 @@ body {
 }
 
 table
-	{
+  {
 
-	background: #FFF9F9 !important;
-	font: oblique 120% sans-serif bold; 
-	font-size: large;
-	
+  background: #FFF9F9 !important;
+  font: oblique 120% sans-serif bold; 
+  font-size: large;
+  
 
-	}
+  }
 
-	thead
-		{
-			background: #2980b9 ;	
+  thead
+    {
+      background: #2980b9 ; 
 
-			
-			color :white ;
-		}
-		th
-		{
-			text-align: center !important ; 
-			padding: 0.5em !important;
-		}
+      
+      color :white ;
+    }
+    th
+    {
+      text-align: center !important ; 
+      padding: 0.5em !important;
+    }
 
 
-		td
-		{
-			text-align: center !important;
-			padding: 0.3em !important;
-			
-		}
+    td
+    {
+      text-align: center !important;
+      padding: 0.3em !important;
+      
+    }
 
 .tablita{
   text-align: left !important;
@@ -160,26 +160,124 @@ div .fondito{
 
  div .hero-unit{
   width :769px !important;
-  height: 200px !important;
+  height: 300px !important;
   
  }
 
+ div.evento{
+ 
+  margin-left: 100px;
+ }
+
  div .span3{
-
   margin-right: -10px !important;
-
  }
 
  h2{
 
   text-indent: 10px;
   text-align: center;
-  
-
   margin-top: 10px !important;
-
   text-shadow: 1px 2px #2c3e50;
- 
-
-
  }
+
+ span.hora{
+    margin-left: 100px;
+    text-align: center;
+    border-radius:0.8em; 
+    -moz-border-radius:0.8em;
+    -webkit-border-radius:0.8em;
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    background-color:#2ecc71; 
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    width: 5.6em;
+ }
+
+ span.fecha { 
+    
+    text-align: center;
+    border-radius:0.8em; 
+    -moz-border-radius:0.8em;
+    -webkit-border-radius:0.8em;
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    background-color:#3498db; 
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    width: 10.6em;
+
+  }
+
+  span.edicion{
+  
+  margin: 5px ;
+  position: relative;
+  display: inline-block;
+  left: 100px;
+
+
+  }
+
+  div.fechaactual{
+    
+    margin-top: 15px;
+    margin-bottom: -15px;
+    text-align: center;
+    color: #3498db;
+    font-weight: 900;
+    font-size: 20pt;
+
+  }
+
+  /*===================================================== 
+  micss.css */
+  body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .hero-unit h1 { font-size: 2em; }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .hero-unit h1 { font-size: 2em; }
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .hero-unit h1 { font-size: 2em; }
+}
+

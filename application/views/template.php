@@ -1,5 +1,6 @@
 
 	<body>
+
       		<!-- Barra superior fija con opciones principales de menú -->
         <div class="navbar navbar-inverse fondito">
             <div class="navbar fondito">
@@ -15,12 +16,12 @@
                         <ul class="nav">
                             <?= my_menu_ppal(); ?>
                         </ul>
-                      <!--  <ul class="nav">
+                        <ul class="nav">
                             <?= form_open('agenda/search', array('class'=>'form-search')); ?>
                                 <?= form_input(array('type'=>'text', 'name'=>'buscar', 'id'=>'buscar', 'placeholder'=>'Buscar por Evento', 'class'=>'input-medium search-query')); ?>
                                 <?= form_button(array('type'=>'submit', 'content'=>'<i class="icon-search"> </i>', 'class'=>'btn')); ?>
                             <?= form_close(); ?>
-                        </ul>  -->
+                        </ul> 
                         
                     </div>
 
@@ -36,22 +37,25 @@
                 <?php if ($this->session->userdata('usuario') == TRUE ) 
                             {
                                 ?>
-                <div class="span3">
+                <div class="span4">
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">
                             
-
-                                <li class="nav-header"> usuario </li>
+                                <li class="nav-header"> Menu Opciones </li>
+                                  
+                                <?= form_open('agenda/search', array('class'=>'form-search')); ?>
+                                <?= form_input(array('type'=>'text', 'name'=>'buscar', 'id'=>'buscar', 'placeholder'=>'Buscar por Evento', 'class'=>'input-medium search-query')); ?>
+                                <?= form_button(array('type'=>'submit', 'content'=>'<i class="icon-search"> </i>', 'class'=>'btn')); ?>
+                                <?= form_close(); ?>
                                 <?= my_menu_app(); ?>
-                               
-                           
-                        
+
+                                                                                
                         </ul>
                     </div>
                 </div>
 
                 <!-- Contenido de la aplicación -->
-                <div class="span9">
+                <div class="span8">
 
                 	<?= $this->load->view($contenido) ?>
 
@@ -60,6 +64,7 @@
                 }
                 else{
                     ?>
+
                 <div class="span12">
 
                     <?= $this->load->view($contenido) ?>

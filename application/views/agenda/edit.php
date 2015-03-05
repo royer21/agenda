@@ -48,19 +48,19 @@
 	<div class="control-group">
 		<?= form_label('Fecha', 'fecha', array('class'=>'control-label')); ?>
 		<span class="uneditable-input"><?= $registro->fecha ;?></span>
-		<?= form_input(array('type'=>'date','name'=>'fecha','id'=>'fecha','value'=>$registro->fecha)); ?>
+		<?= form_input(array('type'=>'text','name'=>'fecha','id'=>'datetimepicker1','value'=>$registro->fecha)); ?>
 	</div>
 
 	<div class="control-group">
-		<?= form_label('Hora', 'hora', array('class'=>'control-label')); ?>
+		<?= form_label('Hora de Inicio', 'hora', array('class'=>'control-label')); ?>
 		<span class="uneditable-input"><?= $registro->hora ;?></span>
-		<?= form_input(array('type'=>'time','name'=>'hora','id'=>'hora', 'value'=>$registro->hora)); ?>
+		<?= form_input(array('type'=>'time','name'=>'hora','id'=>'datetimepicker2', 'value'=>$registro->hora)); ?>
 	</div>
 
 	<div class="control-group">
-		<?= form_label('Duración', 'duracion', array('class'=>'control-label')); ?>
+		<?= form_label('Hora de Fin', 'duracion', array('class'=>'control-label')); ?>
 		<span class="uneditable-input"><?= $registro->duracion ;?></span>
-		<?= form_input(array('type'=>'text','name'=>'duracion','id'=>'duracion', 'value'=>$registro->duracion)); ?>
+		<?= form_input(array('type'=>'text','name'=>'duracion','id'=>'datetimepicker3', 'value'=>$registro->duracion)); ?>
 	</div>
 
 	<div class="control-group">
@@ -80,21 +80,7 @@
 		<span class="uneditable-input"><?= $registro->asistencia ;?></span>
 		<?= form_input(array('type'=>'text','name'=>'asistencia','id'=>'asistencia', 'value'=>$registro->asistencia)); ?>
 	</div>
-
-	<div class="control-group">
-		<?= form_label('Creado', 'created', array('class'=>'control-label')); ?>
-		<span class="uneditable-input"><?= date("d/m/Y - H:i ", strtotime($registro->created)) ;?></span>
-		<?= form_hidden('created', $registro->created); ?>
-	</div>
-
-	<div class="control-group">
-		<?= form_label('Modificado', 'updated', array('class'=>'control-label')); ?>
-		<span class="uneditable-input"><?= date("d/m/Y - H:i ", strtotime($registro->created)); ;?></span>
-		<?= form_hidden('updated', $registro->updated); ?>
-	</div>
-
 	 			
-
   	<div class="form-actions">
 		<?= form_button(array('type'=>'submit', 'content'=>'Aceptar', 'class'=>'btn btn-primary')); ?>
 		<?= anchor('agenda/asistencia', 'Cancelar', array('class'=>'btn')); ?>

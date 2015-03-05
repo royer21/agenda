@@ -9,55 +9,49 @@
 		<?= anchor('agenda/create','Agregar',array('class'=>'btn'))?>
 	<?= form_close(); ?>
 
-<table class="table  table-hover table-condensed table-bordered" >
-	<thead>
-		<tr>
-			<th>Edit</th>
-			<th>Procedencia</th>
-			<th>Evento</th>		
-			<th>Descripcion</th>
-			<th>Lugar</th>
-			<th>Categoria</th>
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Asistio</th>
-		</tr>
-	</thead>	
-
-	<tbody>
-		<?php foreach ($query as $registro): ?>
-		<?php if ($registro->asistencia=='si') {
-			echo "<tr class='info'>" ;			
-		}
-		else  {
-			echo "<tr class='success'>" ;	
-		}?>
+	<?php foreach ($query as $registro): ?>
 		
-			<td><?= anchor('agenda/edit/'.$registro->id,'<i class="icon-edit"></i>') ; ?></td>
-			
-			<td><?= $registro->procedencia ?></td>
-			<td><?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?></td>
-			<td><?= $registro->descripcion ?></td>
-			<td><?= $registro->lugar ?></td>
-			<td><?= $registro->categoria ?></td>
-			<td><?= $registro->fecha ?></td>
-			<td><?= $registro->hora ?></td>
-			<td><?= $registro->asistencia ?></td>
-			
-		
-			
-			
-		</tr>
+		<span class="hora">	
+				<h4> <?= $registro->hora ?>  </h4>	
+				
+			</span>
+			<span class="fecha">	
 
-		<?php endforeach; ?>
+				<div>
+					<?= $registro->fecha ?> 
+								
+				</div>
+								
+			</span>
 
-
-	</tbody>
-		
-
+			<div>
+				<?= anchor('agenda/edit/'.$registro->id,'<i class="icon-edit"></i>') ; ?>
+			</div>
+			<div class="evento">
+				
+				<h4>Procedencia: <?= $registro->procedencia ?> </h4>
 			
+				<h4>Evento : <?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?></h4>
+				
+				<div>
+					<p>
+						<strong>Descripcion</strong>
+						<?= $registro->descripcion ?>
+					  
+					</p>
+					<p>
+						<strong>Lugar </strong>
+						<?= $registro->lugar ?>
+					</p>
+				</div>
+				
+			</div>
 
-</table>
+
+	<?php endforeach; ?>
+
+
+
 
 	<div class="form-actions">
 				

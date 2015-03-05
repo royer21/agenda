@@ -8,6 +8,7 @@
 			  $tipo=array('Academico'=>'Academico','Institucional'=>'Institucional','Cultural'=>'Cultural','Empresarial'=>'Empresarial','Recreativo'=>'Recreativo','Deportivo'=>'Deportivo');
 			  $categoria=array('Programado'=>'Programado','Invitacion'=>'Invitacion'); 
 			  $asistencia=array('si'=>'si','no'=>'no'); ?>
+		
 
 		<div class="control-group">
 		<?= form_label('Procedencia', 'procedencia', array('class'=>'control-label')); ?>
@@ -35,20 +36,19 @@
 		</div>
 
 		<div class="control-group">
+
 		<?= form_label('Fecha', 'fecha', array('class'=>'control-label')); ?>
-		<?= form_input(array('type'=>'date','name'=>'fecha','id'=>'fecha','placeholder'=>'Fecha....', 'value'=>set_value('fecha'))); ?>
+		<?= form_input(array('type'=>'text','name'=>'fecha','id'=>'datetimepicker1')); ?>
 		</div>
 
 		<div class="control-group">
-		<?= form_label('Hora', 'hora', array('class'=>'control-label')); ?>
-		<?= form_input(array('type'=>'text','name'=>'hora','id'=>'hora','placeholder'=>'hora....', 'value'=>set_value('hora'))); ?>
-		
-
+		<?= form_label('Hora de Inicio', 'hora', array('class'=>'control-label')); ?>
+		<?= form_input(array('type'=>'text','name'=>'hora','id'=>'datetimepicker2')); ?>
 		</div>
 
 		<div class="control-group">
-		<?= form_label('Duración', 'duracion', array('class'=>'control-label')); ?>
-		<?= form_input(array('type'=>'text','name'=>'duracion','id'=>'duracion','placeholder'=>'Duración....', 'value'=>set_value('duracion'))); ?>
+		<?= form_label('Hora de Fin', 'duracion', array('class'=>'control-label')); ?>
+		<?= form_input(array('type'=>'text','name'=>'duracion','id'=>'datetimepicker3')); ?>
 		</div>
 
 		<div class="control-group">
@@ -75,8 +75,6 @@
 	
 		<div class="form-actions">
 		<?= form_button(array('type'=>'submit', 'content'=>'Aceptar', 'class'=>'btn btn-primary')); ?>
-
-		
 		<?= anchor('agenda/index', 'Cancelar', array('class'=>'btn')); ?>
 		</div>
 

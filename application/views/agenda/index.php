@@ -1,9 +1,4 @@
-		<link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet" media="screen">
-		<link href="<?= base_url('css/bootstrap-responsive.css') ?>" rel="stylesheet">
-		<link href="<?= base_url('css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
-		<link href="<?= base_url('css/micss.css') ?>" rel="stylesheet">
-		<link href="<?= base_url('js/jquery.js') ?>" rel="stylesheet">
-		<link href="<?= base_url('js/bootstrap-datetimepicker.min.js') ?>" rel="stylesheet">
+
 
 	<?php
 		 $opciones= array(
@@ -25,6 +20,20 @@
 			'2015'=>'2015'
 		);
 		 ?>
+<div class="fechaactual">
+	
+	<script>
+	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+	var f=new Date();
+	document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+	</script>
+</div>
+<br></br>
+
+
+<br></br>
+
 
 	<?= form_open('agenda/search_month_year', array('class'=>'form-search')); ?>
 		<?= form_label('Mes', 'mes', array('class'=>'control-label')); ?>
@@ -38,56 +47,49 @@
 
 	<?= form_close(); ?>
 
-<table class="table table-hover table-condensed table-bordered" >
-	<thead>
-		<tr>
-		<!--<th>ID</th>-->
-			<th>Procedencia</th> 
-			<th>Evento</th>		
-			<th>Descripcion</th>
-			<th>Lugar</th>
-		<!--<th>Categoria</th>-->
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Duración</th>
-		<!--	<th> creado por </th>
-		<th>Ambito</th>
-		<th>Tipo</ 
-			<th>Creado</th>
-			<th>Modificado</th>-->
-			
+<?php foreach ($query as $registro): ?>
 
-			
-		</tr>
-	</thead>	
 
-	<tbody>
-		<?php foreach ($query as $registro): ?>
-		<tr>
-		<!--<td><?= anchor('agenda/edit/'.$registro->id,$registro->id) ; ?></td>-->
-			
-			<td><?= $registro->procedencia ?></td>
-			<td><?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?></td>
-			<td><?= $registro->descripcion ?></td>
-			<td><?= $registro->lugar ?></td>
-		<!--<td><?= $registro->categoria ?></td>-->
-			<td><?= $registro->fecha ?></td>
-			<td><?= $registro->hora ?></td>
-			<td><?= $registro->duracion?></td>
-		<!--	<th><?= $registro->usuario_id ?> </th>
-			<td><?= $registro->ambito ?></td>
-			<td><?= $registro->tipo ?></td>	-->
-			<?php date("d/m/Y - H:i ", strtotime($registro->created)); ?>
-			<?php date("d/m/Y - H:i ", strtotime($registro->updated)); ?>
+	<span class="edicion">
+				<?= anchor('agenda/edit/'.$registro->id,'<i class="icon-edit"></i>') ; ?>
+	</span >
 
-			
-		</tr>
-		<?php endforeach; ?>
+	<span class="hora">	
+		<h4> <?= $registro->hora ?>  </h4>	
 		
-	</tbody>
+	</span>
+	<span class="fecha">	
+
+			
+			<?= $registro->fecha ?> 
+							
 		
+				
+		
+	</span>
 
 
-</table>
+	<div class="evento">
+		<h4>Evento : <?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?></h4>
+		
+		<div>
+			<p>
+				<strong>Descripcion</strong>
+				<?= $registro->descripcion ?>
+			  
+			</p>
+			<p>
+				<strong>Lugar </strong>
+				<?= $registro->lugar ?>
+			</p>
+		</div>
+		
+	</div>
 
-<?php echo $this->pagination->create_links();?>
+
+<?php endforeach; ?>
+
+<div>
+	
+	<?php echo $this->pagination->create_links();?>
+</div>

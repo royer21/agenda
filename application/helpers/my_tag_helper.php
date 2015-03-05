@@ -33,11 +33,7 @@ if ( ! function_exists('my_menu_ppal')) {
 			$opciones = $opciones.'<li>'.anchor('home/ingreso', 'Ingreso').'</li>';
 		}
 
-		form_open('agenda/search', array('class'=>'form-search')); ?>
-                                <?= form_input(array('type'=>'text', 'name'=>'buscar', 'id'=>'buscar', 'placeholder'=>'Buscar por Evento', 'class'=>'input-medium search-query')); ?>
-                                <?= form_button(array('type'=>'submit', 'content'=>'<i class="icon-search"> </i>', 'class'=>'btn')); ?>
-                            <?= form_close(); 
-
+	
 		return $opciones;
 	}
 

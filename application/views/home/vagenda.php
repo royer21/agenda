@@ -1,4 +1,3 @@
-
 	<h2> Registro de Eventos por fecha  </h2>
 	
 	<?php $buscar2 = 0; ?>
