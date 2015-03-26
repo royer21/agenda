@@ -14,15 +14,20 @@ class Model_Agenda extends CI_Model {
         $this->db->order_by("fecha","desc");
     }
 
-
     function allfiltered_index($inicio=FALSE,$limite=FALSE) {
-        $this->db->order_by('fecha','desc');
-    
+
+        $mes= date('m');
+        $fecha_actual = date('Y-m-d');
+        $this->db->where('fecha >=',$fecha_actual);
+        $this->db->order_by('fecha','asc');
+        $this->db->where('month(fecha)',$mes) ;
         if ($inicio!==FALSE && $limite!==FALSE) {
             $this->db->limit($limite,$inicio);
             # code...
         }
-        $this->db->like('asistencia','si');
+       // para filtrar la asistencia solo del alcalde
+       // $this->db->like('asistencia','si');
+        
         $query = $this->db->get('agenda');
         return $query->result();
     }
@@ -34,9 +39,52 @@ class Model_Agenda extends CI_Model {
         return $query->result();
     }
 
+    function allfiltered_asist() {
+       
+        $value=TRUE;
+        $this->db->where('asistencia',$value);
+        $this->db->order_by("fecha","desc");
+        $query = $this->db->get('agenda');
+        return $query->result();
+    }
+
+    function allfiltered_no_asist() {
+        
+      
+        $value=FALSE;
+        $this->db->where('asistencia',$value);
+        $this->db->order_by("fecha","desc");
+        $query = $this->db->get('agenda');
+        return $query->result();
+    }
+
+    function today_events(){
+
+        $dia= date('d');
+        $mes= date('m');
+        $year =date('Y');
+        $this->db->where("day(fecha)",$dia) ;
+        $this->db->where("month(fecha)",$mes) ;
+        $this->db->where('year(fecha)',$year) ;
+        $this->db->order_by('fecha','desc');
+        $query = $this->db->get('agenda');
+        return $query->result();    
+    }
+
+    function mes_events(){
+
+        $mes= date('m');
+        $year =date('Y');
+        $this->db->where("month(fecha)",$mes) ;
+        $this->db->where('year(fecha)',$year) ;
+        $this->db->order_by('fecha','desc');
+        $query = $this->db->get('agenda');
+        return $query->result();    
+    }
+
     function next_events(){
-           
         $fecha_actual = date('Y-m-d');
+        $this->db->order_by('fecha','desc');
 
         $this->db->where('fecha >',$fecha_actual);
         $query = $this->db->get('agenda');
@@ -47,13 +95,8 @@ class Model_Agenda extends CI_Model {
     function mesano($mes, $year) {
         $this->db->where("month(fecha)",$mes) ;
         $this->db->where('year(fecha)',$year) ;
-        
-
-        $this->db->like('asistencia','si');
         $query = $this->db->get('agenda');
-
-       
-        
+             
         return $query->result();
     }
 

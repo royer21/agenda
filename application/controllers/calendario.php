@@ -8,7 +8,7 @@ class Calendario extends CI_Controller {
 
 		//$this->load->model('Model_Agenda');
 		$this->load->library('calendar');
-		
+	
 		
 	}
 
@@ -20,8 +20,7 @@ class Calendario extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	
-
-		
+	
 	}
 
 }

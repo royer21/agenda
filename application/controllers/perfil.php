@@ -7,7 +7,6 @@ class Perfil extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('Model_Perfil');
-		$this->load->library('security');
 		$this->load->library('perfilLib');
 		$this->form_validation->set_message('required', 'Debe ingresar un valor para %s');
 		$this->form_validation->set_message('norep', 'Existe un registro con el mismo %s');
@@ -60,8 +59,7 @@ class Perfil extends CI_Controller {
 		else{
 			$registro['created'] = date('Y/m/d H:i');
 			$registro['updated'] = date('Y/m/d H:i');
-			//$this->Model_Perfil->insert($registro);
-			$this->Model_Perfil->insert($this->security->xss_clean($registro));
+			$this->Model_Perfil->insert($registro);
 			redirect('perfil/index');
 		}
 	}

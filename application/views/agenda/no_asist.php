@@ -1,62 +1,81 @@
 <div class="page-header">
 	
-	<h1>Control de Asistencia<small> Actividades Oficiales en la UNJBG</small></h1>
+	<h1>Control de Asistencia<small> Actividades Oficiales en la MDCN</small></h1>
 </div>
 
-	<?= form_open('agenda/search', array('class'=>'form-search')); ?>
-		<?= form_input(array('type'=>'text', 'name'=>'buscar', 'id'=>'buscar', 'placeholder'=>'Buscar por Evento', 'class'=>'input-medium search-query')); ?>
-		<?= form_button(array('type'=>'submit', 'content'=>'<i class="icon-search"> </i>', 'class'=>'btn btn-primary')); ?>
-		<?= anchor('agenda/create','Agregar',array('class'=>'btn'))?>
-	<?= form_close(); ?>
+	<?= form_open('agenda/search_no_asist', array('class'=>'form-search')); ?>
+        <?= form_input(array('type'=>'text', 'name'=>'buscar', 'id'=>'buscar', 'placeholder'=>'Eventos no Asistidos', 'class'=>'input-medium search-query')); ?>
+        <?= form_button(array('type'=>'submit', 'content'=>'<i class="glyphicon glyphicon-search"> </i>', 'class'=>'btn')); ?>
+    <?= form_close(); ?>
 
-<table class="table table-hover table-condensed table-bordered" >
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Procedencia</th>
-			<th>Evento</th>		
-			<th>Descripcion</th>
-			<th>Lugar</th>
-			<th>Categoria</th>
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Asistio</th>
+	<?php foreach ($query as $registro): ?>
 			
+			<div class="calendario display">
+				<?= $dia = substr($registro->fecha, 8, 2); ?>
+				<em>
+				<span class="hidden">
+				<?= $mes=substr($registro->fecha, 5, 2); 
+				echo "</span>";
+					switch ($mes) {  
+						case '1':echo "Enero";break;
+						case '2':echo "Febrero";break;
+						case '3':echo "Marzo";break;
+						case '4':echo "Abril";break;
+						case '5':echo "Mayo";break;
+						case '6':echo "Junio";break;
+						case '7':echo "Julio";break;
+						case '8':echo "Agosto";break;
+						case '9':echo "Septiembre";break;
+						case '10':echo "Octubre";break;
+						case '11':echo "Noviembre";break;
+						case '12':echo "Diciembre";break;
+						default:break;
+					}
+				?>
+			
+				</em>
+			</div>
 
-			
-		</tr>
-	</thead>	
 
-	<tbody>
-		<?php foreach ($query as $registro): ?>
-		<tr>
-			<td><?= anchor('agenda/edit/'.$registro->id,'<i class="icon-edit"></i>'); ?></td>
-			
-			<td><?= $registro->procedencia ?></td>
-			<td><?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?></td>
-			<td><?= $registro->descripcion ?></td>
-			<td><?= $registro->lugar ?></td>
-			<td><?= $registro->categoria ?></td>
-			<td><?= $registro->fecha ?></td>
-			<td><?= $registro->hora ?></td>
-			<td><?= $registro->asistencia ?></td>
-			
-		
-			
-			
-		</tr>
+			<div class="espaciado">
+					<p class="evento mayuscula">
+						<?php if ($this->session->userdata('usuario') == TRUE ) 
+	                            {
+	                                ?>
+						<?= anchor('agenda/edit/'.$registro->id,'<i class="glyphicon glyphicon-edit"></i>') ; ?>
+						  <?php
+			                } ?>
 
-		<?php endforeach; ?>
+						<?= anchor('agenda/detalles/'.$registro->id,$registro->evento) ; ?>
+					</p>	
+					<p>
+						<i class="glyphicon glyphicon-time"></i>
+						<strong>Hora </strong>
+						<?= $registro->hora ?>
+					</p>
+					<p>
+						<i class="glyphicon glyphicon-map-marker"></i>
+						<strong>Lugar </strong>
+						<?= $registro->lugar ?>
+					</p>
+					<p>
+						<i class="glyphicon glyphicon-hand-right"></i>
+						<strong>Derivado A : </strong>
+						<?= $registro->derivado ?>
+					</p>
+				
 
+			</div>
+			<br>
+				
+
+	<?php endforeach; ?>
 
 	</tbody>
 		
-
-			
-
 </table>
 
 	<div class="form-actions">
 				
-				<?= anchor('agenda/index', 'regresar', array('class'=>'btn')); ?>
+				<?= anchor('agenda/index', 'regresar', array('class'=>'btn btn-success')); ?>
 				</div>

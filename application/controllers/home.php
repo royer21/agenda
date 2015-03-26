@@ -53,7 +53,7 @@ class Home extends CI_Controller {
 			$this->ingreso();
 		}
 		else {
-			redirect('home/index');
+			redirect('agenda/index');
 		}
 		
 	}
@@ -67,7 +67,7 @@ class Home extends CI_Controller {
 
 	public function salir() {
 		$this->session->sess_destroy();
-		redirect('home/index');
+		redirect('agenda/index');
 	}
 
 	public function cambio_clave() {

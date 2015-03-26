@@ -16,8 +16,7 @@
 			<th> Login </th>
 			<th> eMail </th>
 			<th> Perfil </th>
-			<th> Creado </th>
-			<th> Modificado </th>
+			
 		</tr>
 	</thead>
 
@@ -29,8 +28,7 @@
 			<td> <?= $registro->login ?> </td>
 			<td> <?= $registro->email ?> </td>
 			<td> <?= $registro->perfil_name ?> </td>
-			<td> <?= date("d/m/Y - H:i", strtotime($registro->created)); ?> </td>
-			<td> <?= date("d/m/Y - H:i", strtotime($registro->updated)); ?> </td>
+			
 		</tr>
 		<?php endforeach; ?>
 	</tbody>

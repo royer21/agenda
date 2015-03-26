@@ -20,6 +20,6 @@
 
 	<div class="form-actions">
 		<?= form_button(array('type'=>'submit', 'content'=>'Confirmar', 'class'=>'btn btn-primary')); ?>
-		<?= anchor('home/index', 'Cancelar', array('class'=>'btn')); ?>
+		<?= anchor('agenda/index', 'Cancelar', array('class'=>'btn btn-success')); ?>
 	</div>
 <?= form_close(); ?>

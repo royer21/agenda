@@ -18,7 +18,7 @@ class Agenda extends CI_Controller {
 	public function index($pagina = FALSE) {
 
 		$inicio= 0 ;
-		$limite= 3 ;
+		$limite= 4 ;
 		if ($pagina){
 			$inicio=($pagina-1)*$limite;
 		}
@@ -59,13 +59,62 @@ class Agenda extends CI_Controller {
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	
 	}
-	
 
 	public function search() {
+
 		$data['contenido'] = 'agenda/index';
 		$data['titulo'] = 'Actividades';
 		$value = $this->input->post('buscar');
 		$data['query'] = $this->Model_Agenda->allfiltered('evento',$value);	
+
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
+
+	public function search_categoria() {
+
+		$data['contenido'] = 'agenda/index';
+		$data['titulo'] = 'Actividades';
+		$value = $this->input->post('buscar');
+		$data['query'] = $this->Model_Agenda->allfiltered('categoria',$value);	
+
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
+
+	public function search_oficio() {
+
+		$data['contenido'] = 'agenda/index';
+		$data['titulo'] = 'Actividades';
+		$value = $this->input->post('buscar');
+		$data['query'] = $this->Model_Agenda->allfiltered('oficio',$value);	
+
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
+
+	public function search_asist() {
+		
+		$data['contenido'] = 'agenda/asist';
+		$data['titulo'] = 'Actividades Asistido';
+		$value = $this->input->post('buscar');
+		$data['query'] = $this->Model_Agenda->allfiltered_asist('evento',$value);	
+		
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
+
+	public function search_no_Asist() {
+		
+		$data['contenido'] = 'agenda/no_asist';
+		$data['titulo'] = 'Actividades No Asistidos';
+		$value = $this->input->post('buscar');
+		$data['query'] = $this->Model_Agenda->allfiltered_no_asist('evento',$value);	
+	
 		$this->load->view('header', $data);
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	
@@ -86,7 +135,7 @@ class Agenda extends CI_Controller {
 	public function next_events(){
 		
 
-        $data['contenido'] = 'agenda/next_events';
+        $data['contenido'] = 'agenda/index';
 		$data['titulo'] = 'Actividades';
 		$data['query']=$this->Model_Agenda->next_events();
         $this->load->view('header', $data);
@@ -94,6 +143,30 @@ class Agenda extends CI_Controller {
 		$this->load->view('footer', $data);
 	}
 
+
+	public function today_events(){
+		
+
+      	$data['contenido'] = 'agenda/index';
+		$data['titulo'] = 'Actividades de Hoy';
+		
+		$data['query'] = $this->Model_Agenda->today_events();	
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
+
+	public function mes_events(){
+		
+
+      	$data['contenido'] = 'agenda/index';
+		$data['titulo'] = 'Actividades de Hoy';
+		
+		$data['query'] = $this->Model_Agenda->mes_events();	
+		$this->load->view('header', $data);
+		$this->load->view('template', $data);
+		$this->load->view('footer', $data);	
+	}
  
 	public function search_year() {
 		
@@ -105,7 +178,6 @@ class Agenda extends CI_Controller {
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	
 	}
-
 
 	public function create(){
 		//$id = $this->uri->segment(3);
@@ -121,17 +193,19 @@ class Agenda extends CI_Controller {
 	public function insert(){
 		//$id = $this->uri->segment(3);
 		$registro = $this->input->post();	
-		
+		$this->form_validation->set_rules('oficio', 'oficio', 'required');
 		$this->form_validation->set_rules('procedencia', 'procedencia', 'required');
 		$this->form_validation->set_rules('evento', 'evento', 'required');	
-		$this->form_validation->set_rules('ambito', 'ambito', 'required');	
-		$this->form_validation->set_rules('tipo', 'tipo', 'required');			
+		$this->form_validation->set_rules('ambito', 'ambito', 'required');
+		$this->form_validation->set_rules('tipo', 'tipo', 'required');	
 		$this->form_validation->set_rules('categoria', 'categoria', 'required');	
 		$this->form_validation->set_rules('fecha', 'fecha', 'required');	
 		$this->form_validation->set_rules('hora', 'hora', 'required');	
-		$this->form_validation->set_rules('duracion', 'duracion', 'required');	
+	//	$this->form_validation->set_rules('duracion', 'duracion', 'required');	
 		$this->form_validation->set_rules('lugar', 'lugar', 'required');	
-		$this->form_validation->set_rules('descripcion', 'descripcion', 'required');	
+		$this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+	//	$this->form_validation->set_rules('asistencia', 'asistencia', 'required');
+	//	$this->form_validation->set_rules('derivado', 'derivado', 'required');
 		if ($this->form_validation->run()==FALSE) {
 			$this->create();
 		}
@@ -178,6 +252,7 @@ class Agenda extends CI_Controller {
 		$registro = $this->input->post();
 
 		//$this->form_validation->set_rules('name', 'Nombre', 'required|callback_norep');
+		$this->form_validation->set_rules('oficio', 'oficio', 'required|callback_norep');
 		$this->form_validation->set_rules('procedencia', 'procedencia', 'required|callback_norep');
 		$this->form_validation->set_rules('evento', 'evento', 'required|callback_norep');	
 		$this->form_validation->set_rules('ambito', 'ambito', 'required|callback_norep');	
@@ -185,10 +260,12 @@ class Agenda extends CI_Controller {
 		$this->form_validation->set_rules('categoria', 'categoria', 'required|callback_norep');	
 		$this->form_validation->set_rules('fecha', 'fecha', 'required|callback_norep');	
 		$this->form_validation->set_rules('hora', 'hora', 'required|callback_norep');	
-		$this->form_validation->set_rules('duracion', 'duracion', 'required|callback_norep');	
+	//	$this->form_validation->set_rules('duracion', 'duracion', 'required|callback_norep');	
 		$this->form_validation->set_rules('lugar', 'lugar', 'required|callback_norep');	
 		$this->form_validation->set_rules('descripcion', 'descripcion', 'required|callback_norep');	
-		// $this->form_validation->set_rules('password', 'Clave', 'required'); // por si existe mas campos
+	//	$this->form_validation->set_rules('asistencia', 'asistencia', 'required|callback_norep');
+	//	$this->form_validation->set_rules('derivado', 'derivado', 'required|callback_norep');		
+		//$this->form_validation->set_rules('password', 'Clave', 'required'); // por si existe mas campos
 		if($this->form_validation->run() == FALSE) {
 			$this->edit($registro['id'] );
 		}
@@ -226,7 +303,7 @@ class Agenda extends CI_Controller {
 	public function asist() {
 		$data['contenido'] = 'agenda/asist';
 		$data['titulo'] = 'Agenda';
-		$data['query'] = $this->Model_Agenda->allfiltered('asistencia','si');	
+		$data['query'] = $this->Model_Agenda->allfiltered_asist();	
 		$this->load->view('header', $data);
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	
@@ -234,7 +311,7 @@ class Agenda extends CI_Controller {
 	public function no_asist() {
 		$data['contenido'] = 'agenda/no_asist';
 		$data['titulo'] = 'Agenda';
-		$data['query'] = $this->Model_Agenda->allfiltered('asistencia','no');	
+		$data['query'] = $this->Model_Agenda->allfiltered_no_asist();	
 		$this->load->view('header', $data);
 		$this->load->view('template', $data);
 		$this->load->view('footer', $data);	

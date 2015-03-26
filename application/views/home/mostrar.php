@@ -1,6 +1,3 @@
-
-
-
 	<h2> Registro de Eventos </h2>
 
 	<?php $buscar = 0; ?>
@@ -9,10 +6,7 @@
 		<?= form_button(array('type'=>'submit', 'content'=>'<i class="icon-search"></i>', 'class'=>'btn btn-primary')); ?>
 	<?= form_close();?>
 
-
-
 		<?= anchor('pages/nuevo', 'Agregar', array('class'=>'btn')); ?>
-
 
 		<table class="table">
 			<tr>

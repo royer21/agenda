@@ -7,8 +7,7 @@ class Empleado extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('Model_Empleado');
-
-		
+	
     }
 
 	public function index() {
@@ -52,7 +51,6 @@ class Empleado extends CI_Controller {
 
 	public function insert() {
 		$registro = $this->input->post();
-
 		   	
 			$registro['codigo'] = ($registro['codigo']); 
 			$registro['nombres'] = ($registro['nombres']);

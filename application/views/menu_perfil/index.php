@@ -14,8 +14,7 @@
 			<th> ID </th>
 			<th> Menú </th>
 			<th> Perfil </th>
-			<th> Creado </th>
-			<th> Modificado </th>
+			
 		</tr>
 	</thead>
 
@@ -25,8 +24,6 @@
 			<td> <?= anchor('menu_perfil/edit/'.$registro->id, $registro->id); ?> </td>
 			<td> <?= $registro->menu_name ?> </td>
 			<td> <?= $registro->perfil_name ?> </td>
-			<td> <?= date("d/m/Y - H:i", strtotime($registro->created)); ?> </td>
-			<td> <?= date("d/m/Y - H:i", strtotime($registro->updated)); ?> </td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>

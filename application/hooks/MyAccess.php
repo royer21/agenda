@@ -25,7 +25,10 @@ if ( ! function_exists('autentificar')) {
 			'agenda/index',
 			'agenda/search_month_year',
 			'agenda/search',
-			'agenda/detalles'
+			'agenda/detalles',
+			'agenda/mes_events',
+			'agenda/next_events',
+			'agenda/today_events'
 		);
 		//in_array(cadena que queremos controlar , y el array)
 		if(in_array($url, $libres)) {

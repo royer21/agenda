@@ -32,7 +32,7 @@
 			<td> <?= $registro->url ?> </td>
 			<td> <?= $registro->orden ?> </td>
 			
-			<td> <?= anchor('menu/menu_perfiles/'.$registro->id, '<i class="glyphicon glyphicon-lock"></i>'); ?> </td>
+			<td> <?= anchor('menu/menu_perfiles/'.$registro->id, '<i class="icon-lock"></i>'); ?> </td>
 		
 		</tr>
 		<?php endforeach; ?>

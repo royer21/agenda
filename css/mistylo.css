@@ -8,23 +8,98 @@
   width: 1100px;
   margin: 0 auto;
 }
+.imagen{
+  width: 150px;
+  height: 150px;
+}
+
+.right{
+  position: absolute;
+  right: 0%;
+  top: 26%;
+}
+
+.top{
+
+  padding-top: 10px;
+}
+.left{
+  float: left;
+  margin-right: 10px;
+}
+
+.block{
+  display: inline-block;
+}
+
+.contenido{
+  background: #e4e6eb;
+  padding:10px 10px 10px 20px;
+  border-radius: 10px 10px 10px 10px;
+  border-radius: 27px 27px 27px 27px;
+  -moz-border-radius: 27px 27px 27px 27px;
+  -webkit-border-radius: 27px 27px 27px 27px;
+  border: 0px solid #6194fa;
+}
+
+.box{
+    display: none;
+}
+ 
+.espaciado{
+  margin-left:100px;
+  display: block;
+
+}
+
+.bloque{
+
+  display: block;
+}
+
+.inline{
+  display: inline-block;
+}
+.display  {
+  float: left;
+
+}
+.mayuscula{
+  text-transform: uppercase;
+  font-size:87% !important; 
+  font-family: sans-serif !important;
+  font-weight: bold;
+}
 body {
   background: #444;
   padding: 5em;
 }
 header {
-  background: url("../img/fondo1.png") no-repeat;
-  color: #fff !important;
+  background: url("../img/fondo1.png") ;
+  color: #fff !important;                                                                                                                                                                                                                                             
   height: 200px;
+  display: block;
+
+background-repeat:no-repeat;
   background-size:cover ;
-  -moz-background-size:cover;
+  -webkit-moz-background: ;
+  -moz-moz-background: ;
+  -ms-moz-background: ;
+  -o-moz-background: ;
+  moz-background: ;-size:cover;
   -webkit-background-size:cover;
   -o-background-size:cover;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: -60px;
   margin-bottom: 0px;
+  .titulo {
+    text-align: center;
+    width: 100px;
+    font-size: 25%;
+  }
 }
+
 header .contenedor {
   padding-top: -100px;
 }
@@ -55,6 +130,7 @@ header .contenedor {
   font-size: 20px;
   padding: 0.4em;
 }
+
 footer color: hsl(0,
 footer 0%,
 footer 100%) {
@@ -72,22 +148,22 @@ footer p {
   padding-down: -0.5em;
   left: 20%;
 }
-.titulo {
-  text-align: center;
-  width: 100%;
-}
+
+
 body {
     /* background: url("../img/fondo1.jpg"); */
    background: #95a5a6;
-   
+   position: relative;
    background-size: cover;
+   width: 100%;
         
 }
+
 
 table
   {
 
-  background: #FFF9F9 !important;
+  background: #ecf0f1 !important;
   font: oblique 120% sans-serif bold; 
   font-size: large;
   
@@ -98,7 +174,6 @@ table
     {
       background: #2980b9 ; 
 
-      
       color :white ;
     }
     th
@@ -110,7 +185,8 @@ table
 
     td
     {
-      text-align: center !important;
+     
+      text-align: left !important;
       padding: 0.3em !important;
       
     }
@@ -149,6 +225,7 @@ table
 
 .navbar{
   background: #34495e!important;
+  
 }
 
 
@@ -166,23 +243,39 @@ div .fondito{
 
  div.evento{
  
-  margin-left: 100px;
+  margin-left: 0px;
+
  }
 
  div .span3{
   margin-right: -10px !important;
  }
 
- h2{
 
-  text-indent: 10px;
+.descripcion{
+  
+  background: #ffffff !important;
+  height: 150px !important;
+  width: 260px !important;
+  text-align: justify;
+ }
+
+ h2{
   text-align: center;
+  color: #3498db;
   margin-top: 10px !important;
   text-shadow: 1px 2px #2c3e50;
+  display: block;
+  font-size: 1.5em;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
  }
 
  span.hora{
-    margin-left: 100px;
+    margin-left: 10px;
     text-align: center;
     border-radius:0.8em; 
     -moz-border-radius:0.8em;
@@ -197,6 +290,7 @@ div .fondito{
     width: 5.6em;
  }
 
+
  span.fecha { 
     
     text-align: center;
@@ -208,7 +302,7 @@ div .fondito{
     color: #ffffff;
     display: inline-block;
     font-weight: bold;
-    line-height: 1.6em;
+    line-height: 3em;
     margin-right: 15px;
     width: 10.6em;
 
@@ -218,13 +312,29 @@ div .fondito{
   
   margin: 5px ;
   position: relative;
-  display: inline-block;
-  left: 100px;
+  display: inline;
+  left: 10px;
 
 
   }
 
   div.fechaactual{
+    
+    margin-top: 0%;
+    margin-bottom: 5%;
+    text-align: center;
+    color: #2980b9;
+    font-weight: bold;
+    font-size: 100%;
+    clear: both;
+    height: 20%;
+    border-bottom: 2px solid #919191;
+    background-color:#C3CEE8;
+    background-image: url(http://www.calendario-chiquito.es/images/v3/bg-startseite-monatskalender.jpg)  no-repeat; 
+    border-radius: 10px;
+  }
+
+  div.alcalde{
     
     margin-top: 15px;
     margin-bottom: -15px;
@@ -235,7 +345,14 @@ div .fondito{
 
   }
 
-  /*===================================================== 
+  div.cuadro{
+    background:#ecf0f1;
+    padding: 15px;
+
+  }
+ 
+
+/*===================================================== 
   micss.css */
   body {
   padding-top: 60px;
@@ -244,6 +361,11 @@ div .fondito{
 
 .sidebar-nav {
   padding: 9px 0;
+}
+
+.hidden{
+    visibility: hidden !important;
+    text-align: center !important ;
 }
 
 /* Large desktop */
